@@ -42,13 +42,13 @@ const Login = () => {
     <div className="relative min-h-screen w-full flex items-center justify-center p-4 font-sans overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/src/assets/1-4.jpg')", filter: "brightness(0.55)" }}
+        style={{ backgroundImage: "url('/bg-login.jpg')", filter: "brightness(0.55)" }}
       />
 
       <div className="relative z-10 w-full max-w-[480px] bg-white/85 backdrop-blur-md rounded-[28px] shadow-2xl flex flex-col items-center p-8 animate-in fade-in zoom-in duration-700">
         {/* Logo */}
         <div className="mb-6 w-full flex flex-col items-center">
-          <img src="/src/assets/MSA-New-Logo-Small-V (1).png" alt="MSA University" className="h-20 object-contain mb-3" />
+          <img src="/msa-logo.png" alt="MSA University" className="h-20 object-contain mb-3" />
           <h1 className="text-2xl font-extrabold text-[#c8922a]">MSA University</h1>
           <p className="text-base font-bold text-[#1e3a5f]">Faculty of Computer Science</p>
           <p className="text-xs font-semibold text-[#1e3a5f]/70 mt-0.5 uppercase tracking-widest">Academic Advising System</p>
