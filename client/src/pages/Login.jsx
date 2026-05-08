@@ -19,7 +19,6 @@ const Login = () => {
     setError("");
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password) { setError("Please fill in all fields."); return; }
