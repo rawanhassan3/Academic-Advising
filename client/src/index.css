@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-msa-blue: #1e3a5f;
+  --color-msa-gold: #c8922a;
+  --color-msa-light-blue: #1e7fc0;
+
+  --animate-shake: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+body {
+  @apply bg-gray-50 text-[#1e3a5f] selection:bg-[#c8922a]/30 font-sans antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better responsive height handling */
+.h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Smooth page transitions */
+.page-fade-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
