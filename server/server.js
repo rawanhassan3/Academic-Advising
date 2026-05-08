@@ -8,26 +8,35 @@ connectDB();
 
 const app = express();
 
+// 1. CORS at the very top
 app.use(cors({
   origin: true,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.options('*', cors()); // Enable pre-flight for all routes
+app.options('*', cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve uploaded files
-app.use('/uploads', require('express').static('uploads'));
+// 2. Serve uploaded files
+app.use('/uploads', express.static('uploads'));
 
-// ── Routes ──────────────────────────────────────────────────────
-app.use('/api/auth',    require('./routes/authRoutes'));
-app.use('/api/users',   require('./routes/userRoutes'));
-app.use('/api/excel',   require('./routes/excelRoutes'));
-app.use('/api/courses', require('./routes/courseRoutes'));
-app.use('/api/requests',require('./routes/requestRoutes'));
-app.use('/api/admin',   require('./routes/adminRoutes'));
+// 3. Routes (Support both /api and root paths)
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const excelRoutes = require('./routes/excelRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const requestRoutes = require('./routes/requestRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+
+app.use('/api/auth',    authRoutes);    app.use('/auth',    authRoutes);
+app.use('/api/users',   userRoutes);    app.use('/users',   userRoutes);
+app.use('/api/excel',   excelRoutes);   app.use('/excel',   excelRoutes);
+app.use('/api/courses', courseRoutes);  app.use('/courses', courseRoutes);
+app.use('/api/requests',requestRoutes); app.use('/requests',requestRoutes);
+app.use('/api/admin',   adminRoutes);   app.use('/admin',   adminRoutes);
 
 // Health check
 app.get('/', (req, res) => {
